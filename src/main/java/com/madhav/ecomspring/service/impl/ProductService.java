@@ -29,7 +29,8 @@ public class ProductService implements IProductService {
 
     @Override
     public Product getById(Long id) {
-        return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Product not found with id %d", id)));
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Product not found with id %d", id)));
     }
 
     @Override
@@ -41,5 +42,10 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> searchFullText(String keyword) {
         return productRepository.searchFullText(keyword);
+    }
+
+    @Override
+    public List<Product> getAllByCategory(Long categoryId) {
+        return productRepository.findByCategoryId(categoryId);
     }
 }

@@ -15,5 +15,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "OR LOWER(description) LIKE CONCAT('%', :keyword, '%')",
             nativeQuery = true)
     List<Product> searchFullText(@Param("keyword") String keyword);
-}
 
+    List<Product> findByCategoryId(Long categoryId);
+}

@@ -2,6 +2,7 @@ package com.madhav.ecomspring.controller;
 
 import com.madhav.ecomspring.dto.request.CategoryRequestDTO;
 import com.madhav.ecomspring.dto.response.CategoryResponseDTO;
+import com.madhav.ecomspring.dto.response.CategoryWithProductsResponseDTO;
 import com.madhav.ecomspring.entity.Category;
 import com.madhav.ecomspring.mapper.CategoryMapper;
 import com.madhav.ecomspring.service.impl.CategoryService;
@@ -37,5 +38,10 @@ public class CategoryController {
     public CategoryResponseDTO save(@RequestBody CategoryRequestDTO categoryRequestDTO) {
         Category category = categoryService.save(categoryRequestDTO);
         return CategoryMapper.toDTO(category);
+    }
+
+    @GetMapping("/{categoryId}/products")
+    public CategoryWithProductsResponseDTO getAllByCategory(@PathVariable Long categoryId) {
+        return categoryService.getCategoryWithProducts(categoryId);
     }
 }

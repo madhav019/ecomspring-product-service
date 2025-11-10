@@ -15,4 +15,6 @@ public interface IProductService {
 
     List<Product> searchFullText(String keyword);
 
+    List<Product> getAllByCategory(Long categoryId);
+
 }
